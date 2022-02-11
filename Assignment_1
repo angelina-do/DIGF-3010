@@ -1,0 +1,114 @@
+#include <Adafruit_CircuitPlayground.h>
+#include <Adafruit_Circuit_Playground.h>
+
+int fingerSwitch;
+
+void setup() {
+  // put your setup code here, to run once:
+  CircuitPlayground.begin();
+  Serial.begin(9600);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(9, INPUT_PULLUP);
+  pinMode(6, INPUT_PULLUP);
+  // pinMode(LED_BUILTIN, OUTPUT);
+
+
+}
+
+void loop() {
+
+
+  fingerSwitch = digitalRead(2);
+  Serial.println(fingerSwitch);
+
+  if (fingerSwitch == 0) {
+
+    // put your main code here, to run repeatedly:
+    CircuitPlayground.playTone(500, 100);
+    CircuitPlayground.playTone(500, 100);
+    CircuitPlayground.setPixelColor(0, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(1, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(2, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(3, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(4, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(5, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(6, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(7, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(8, 255,   143,   0);
+    delay(100);
+    CircuitPlayground.setPixelColor(9, 255,   143,   0);
+    delay(500);
+  }
+
+  fingerSwitch = digitalRead(9);
+  Serial.println(fingerSwitch);
+  if (fingerSwitch == 0) {
+
+    // put your main code here, to run repeatedly:
+
+    CircuitPlayground.playTone(500, 100);
+    CircuitPlayground.playTone(300, 100);
+    CircuitPlayground.playTone(100, 100);
+    CircuitPlayground.setPixelColor(0, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(1, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(2, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(3, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(4, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(5, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(6, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(7, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(8, 0,   170,   255);
+    delay(100);
+    CircuitPlayground.setPixelColor(9, 0,   170,   255);
+    delay(500);
+
+  }
+  fingerSwitch = digitalRead(6);
+  Serial.println(fingerSwitch);
+  if (fingerSwitch == 0) {
+
+    // put your main code here, to run repeatedly:
+    CircuitPlayground.playTone(400, 100);
+    CircuitPlayground.playTone(500, 100);
+    CircuitPlayground.playTone(600, 100);
+    CircuitPlayground.setPixelColor(0, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(1, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(2, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(3, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(4, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(5, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(6, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(7, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(8, 255,   0,   243);
+    delay(100);
+    CircuitPlayground.setPixelColor(9, 189,   0,   255);
+    delay(500);
+  }
+  else {
+    CircuitPlayground.clearPixels();
+  }
+}
