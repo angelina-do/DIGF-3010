@@ -1,0 +1,51 @@
+// when tilting head left, turn on LED animation and
+// repeat 15 times lighting up left half of neopixels
+
+input.onGesture(Gesture.TiltRight, function () {
+    light.showRing(
+    `black black black black black pink pink pink pink pink`
+    )
+    for (let i = 0; i < 15; i++) {
+        left_strip.setAll(0xff0080)
+        pause(100)
+        left_strip.setAll(0xffff00)
+        pause(100)
+    }
+    left_strip.setAll(0x00ffff)
+    light.setAll(0x7f00ff)
+})
+
+// when tilting head right, turn on LED animation and
+// repeat 15 times lighting up right half of neopixels
+
+input.onGesture(Gesture.TiltLeft, function () {
+    light.showRing(
+    `pink pink pink pink pink black black black black black`
+    )
+    for (let i = 0; i < 15; i++) {
+        right_strip.setAll(0xff0080)
+        pause(100)
+        right_strip.setAll(0xffff00)
+        pause(100)
+    }
+    right_strip.setAll(0x00ffff)
+    light.setAll(0x7f00ff)
+})
+
+//if wearable reached above 30 degrees, clear lights
+input.onTemperatureConditionChanged(TemperatureCondition.Hot, 30, TemperatureUnit.Celsius, function () {
+    light.clear()
+})
+
+//creating strip functions
+
+let right_strip: light.NeoPixelStrip = null
+let left_strip: light.NeoPixelStrip = null
+left_strip = light.createStrip(pins.A1, 3)
+right_strip = light.createStrip(pins.A5, 3)
+//start up sound and animation
+music.magicWand.play()
+light.showAnimation(light.cometAnimation, 1000)
+light.setAll(0x7f00ff)
+left_strip.setAll(0x00ffff)
+right_strip.setAll(0x00ffff)
