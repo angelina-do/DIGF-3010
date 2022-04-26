@@ -1,0 +1,34 @@
+// "Fairy Dust" By Angelina Do & Valeria Suing
+// DIGF-3010-001 Advanced Wearable Electronics 
+// OCAD University Created on [April 25 2022] 
+// Based on: Motion Activated Cosplay Wings Using Circuit Playground Express
+// R_G0ld, https://www.instructables.com/Motion-Activated-Cosplay-Wings-Using-Circuit-Playg/
+
+input.setAccelerometerRange(AcceleratorRange.OneG)
+light.graph(input.acceleration(Dimension.Z))
+let strip = light.createStrip(pins.A6, 6)
+let right = strip.range(0, 2)
+let left = strip.range(3, 6)
+strip.setAll(0xffffff)
+forever(function () {
+    serial.writeNumber(input.acceleration(Dimension.Z))
+    if (input.acceleration(Dimension.Z) < 0) {
+        light.setAll(0x7f00ff)
+        left.setAll(0xff9da5)
+        right.setAll(0x999999)
+        pins.A2.servoWrite(140)
+        pins.A1.servoWrite(140)
+        pause(500)
+        pins.A2.servoWrite(0)
+        pins.A1.servoWrite(0)
+        pause(500)
+    } else if (input.acceleration(Dimension.Z) > 0) {
+        light.setAll(0x007fff)
+        left.setAll(0x999999)
+        right.setAll(0xff0080)
+        pause(500)
+    } else {
+        light.setAll(0xffffff)
+        strip.setAll(0xffffff)
+    }
+})
